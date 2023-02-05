@@ -1,0 +1,30 @@
+
+@import entity.User
+
+@(name: String, users: List[User])
+
+    @main("Hello") {
+        <section id="content">
+            <div class="wrapper doc">
+                <article>
+                    <h1>Hello, @name!</h1>
+                    <h2>User list</h2>
+                    <div>
+                    @for(user <- users) {
+                        <p>@user.getName @user.getLastname</p>
+                    }
+                    </div>
+                </article>
+                <aside>
+                @commonSidebar()
+                    <ul>
+                        <li><a href="@routes.UserController.list()">Json User list</a>
+                    <li><a href="@routes.UserController.hello(name = "User")">Welcome user</a>
+                        <li><a href="@routes.UserController.user(id = 1)">Get user</a>
+                    </ul>
+                </aside>
+            </div>
+
+
+        </section>
+    }
