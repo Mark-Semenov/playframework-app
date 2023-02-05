@@ -1,0 +1,36 @@
+
+@import entity.User
+
+@(user: User)
+
+    @main("user") {
+
+        <section id="content">
+            <div class="wrapper doc">
+                <article>
+                    <h1>Users</h1>
+                    <p>Id: @user.getId</p>
+                    <p>Name: @user.getName</p>
+                    <div>
+                        <form action="/user" method="post">
+                            <label for="firstname">Input your firstname</label>
+                            <input id="firstname" name="firstname" type="text">
+                            <label for="lastname">Input your lastname</label>
+                            <input id="lastname" name="lastname" type="text">
+                            <button type="submit">Send</button>
+                        </form>
+                    </div>
+                </article>
+                <aside>
+                    <ul>
+                        <li><a href="@routes.UserController.list()">Json User list</a>
+                    <li><a href="@routes.UserController.hello(name = "User")">Welcome user</a>
+                        <li><a href="@routes.UserController.user(id = 1)">Get user</a>
+                    </ul>
+                </aside>
+
+            </div>
+
+
+        </section>
+    }
